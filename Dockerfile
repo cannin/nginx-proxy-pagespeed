@@ -1,6 +1,4 @@
-FROM combro2k/debian-debootstrap:8
-
-MAINTAINER Martijn van Maurik <docker@vmaurik.nl>
+FROM ubuntu:14.04.4
 
 # Environment variables
 ENV DOCKER_HOST=unix:///tmp/docker.sock \

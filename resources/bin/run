@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "*** MAKING NGINX DIRECTORIES"
+
 if [[ ! -d "/data/config" ]]; then
 	mkdir -p /data/config
 fi
@@ -10,6 +12,8 @@ fi
 if [[ ! -d "/data/logs" ]]; then
 	mkdir -p /data/logs
 fi
+
+echo "*** CONFIGURING OPENSSL"
 
 if [[ ! -e "/data/ssl/server.key" ]]; then
     openssl genrsa -out /data/ssl/server.key 4096
@@ -27,6 +31,8 @@ if [[ ! -e "/data/ssl/dhparam.pem" ]]; then
     openssl dhparam -out /data/ssl/dhparam.pem 2048
 fi
 
+echo "*** CONFIGURING PAGESPEED"
+
 if [[ ! -e "/data/config/pagespeed-extra.conf" ]]; then
     touch /data/config/pagespeed-extra.conf
 fi
@@ -37,5 +43,7 @@ else
     rm /data/config/proxy.conf
     touch /data/config/proxy.conf
 fi
+
+echo "*** RUNNING FOREGO"
 
 /usr/local/bin/forego start -f /app/Procfile -r

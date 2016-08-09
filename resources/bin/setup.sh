@@ -6,10 +6,11 @@ declare -A NGX_MODULES
 export DEBIAN_FRONTEND="noninteractive"
 
 # Versions
-export NGINX_VERSION="1.9.11"
-export NPS_VERSION="1.10.33.6"
-export DOCKER_GEN="0.5.0"
-export OPENSSL_VERSION="1.0.2g"
+# NOTE: NPS 1.9.x not supported any longer https://github.com/pagespeed/ngx_pagespeed/issues/1180
+export NGINX_VERSION="1.11.3"
+export NPS_VERSION="1.11.33.2"
+export DOCKER_GEN="0.7.1"
+export OPENSSL_VERSION="1.0.2h"
 
 # Packages
 export PACKAGES=(
@@ -43,7 +44,7 @@ pre_install() {
 	apt-get update -q 2>&1 || return 1
 	apt-get install -yq ${PACKAGES[@]} 2>&1 || return 1
 
-    curl -L --silent https://godist.herokuapp.com/projects/ddollar/forego/releases/current/linux-amd64/forego --output /usr/local/bin/forego 2>&1 || return 1
+    curl -L --silent https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.tgz | tar zx -C /usr/local/bin forego 2>&1 || return 1
     curl -L --silent https://github.com/jwilder/docker-gen/releases/download/${DOCKER_GEN}/docker-gen-linux-amd64-${DOCKER_GEN}.tar.gz | tar zx -C /app 2>&1 || return 1
 
     chmod +x /usr/local/bin/* || return 1
