@@ -75,7 +75,7 @@ install_nginx_modules() {
 
 install_openssl() {
     mkdir -p /usr/src/build/openssl
-    curl http://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz | tar zx -C /usr/src/build/openssl --strip-components=1
+    curl ftp://ftp.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz | tar zx -C /usr/src/build/openssl --strip-components=1
 
     return 0
 }
@@ -85,7 +85,7 @@ install_nginx() {
     for i in ${!NGX_MODULES[@]}; do ADD_MODULES="${ADD_MODULES} --add-module=../nginx-modules/${i}"; done
 
     mkdir -p /usr/src/build/nginx || return 1
-    curl -L --silent ftp://ftp.openssl.org/source/openssl-${NGINX_VERSION}.tar.gz | tar zx --strip-components=1 -C /usr/src/build/nginx 2>&1 || return 1
+    curl -L --silent http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar zx --strip-components=1 -C /usr/src/build/nginx 2>&1 || return 1
 
     cd /usr/src/build/nginx || return 1
 
