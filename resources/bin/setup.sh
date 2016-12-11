@@ -7,10 +7,10 @@ export DEBIAN_FRONTEND="noninteractive"
 
 # Versions
 # NOTE: NPS 1.9.x not supported any longer https://github.com/pagespeed/ngx_pagespeed/issues/1180
-export NGINX_VERSION="1.11.3"
-export NPS_VERSION="1.11.33.2"
-export DOCKER_GEN="0.7.1"
-export OPENSSL_VERSION="1.0.2h"
+export NGINX_VERSION="1.11.5"
+export NPS_VERSION="1.11.33.4"
+export DOCKER_GEN="0.7.3"
+export OPENSSL_VERSION="1.1.0b"
 
 # Packages
 export PACKAGES=(
