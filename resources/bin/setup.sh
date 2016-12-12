@@ -124,7 +124,7 @@ install_nginx() {
 }
 
 post_install() {
-    apt-get autoremove 2>&1 || return 1
+  apt-get autoremove 2>&1 || return 1
 	apt-get autoclean 2>&1 || return 1
 	rm -fr /var/lib/apt /usr/src/build 2>&1 || return 1
 

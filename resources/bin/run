@@ -13,23 +13,23 @@ if [[ ! -d "/data/logs" ]]; then
 	mkdir -p /data/logs
 fi
 
-echo "*** CONFIGURING OPENSSL"
-
-if [[ ! -e "/data/ssl/server.key" ]]; then
-    openssl genrsa -out /data/ssl/server.key 4096
-fi
-
-if [[ ! -e "/data/ssl/server.csr" ]]; then
-    openssl req -new -batch -key /data/ssl/server.key -out /data/ssl/server.csr
-fi
-
-if [[ ! -e "/data/ssl/server.crt" ]]; then
-    openssl x509 -req -days 10000 -in /data/ssl/server.csr -signkey /data/ssl/server.key -out /data/ssl/server.crt
-fi
-
-if [[ ! -e "/data/ssl/dhparam.pem" ]]; then
-    openssl dhparam -out /data/ssl/dhparam.pem 2048
-fi
+#echo "*** CONFIGURING OPENSSL"
+#
+#if [[ ! -e "/data/ssl/server.key" ]]; then
+#  openssl genrsa -out /data/ssl/server.key 4096
+#fi
+#
+#if [[ ! -e "/data/ssl/server.csr" ]]; then
+#  openssl req -new -batch -key /data/ssl/server.key -out /data/ssl/server.csr
+#fi
+#
+#if [[ ! -e "/data/ssl/server.crt" ]]; then
+#  openssl x509 -req -days 10000 -in /data/ssl/server.csr -signkey /data/ssl/server.key -out /data/ssl/server.crt
+#fi
+#
+#if [[ ! -e "/data/ssl/dhparam.pem" ]]; then
+#  openssl dhparam -out /data/ssl/dhparam.pem 2048
+#fi
 
 echo "*** CONFIGURING PAGESPEED"
 
